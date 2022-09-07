@@ -1,6 +1,6 @@
-import CategoryItem from '../category-item/category-item';
+import CategoryItem from '../CategoryItem/CategoryItem';
 
-import './categories-menu.scss';
+import './CategoriesMenu.scss';
 
 const CategoriesMenu = ({ categories }) => {
   return (
