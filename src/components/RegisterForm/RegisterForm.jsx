@@ -3,6 +3,7 @@ import {
   createUserDocumentFromAuth,
   createAuthUserWithEmailAndPassword,
 } from '../../utils/firebase/firebase.utils';
+
 import Button from '../Button/Button';
 import FormInput from '../FormInput/FormInput';
 
@@ -18,8 +19,6 @@ const defaultFormFields = {
 const RegisterForm = () => {
   const [formFields, setFormFiields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
-
-  console.log(formFields);
 
   const resetFormInputs = () => {
     setFormFiields(defaultFormFields);
