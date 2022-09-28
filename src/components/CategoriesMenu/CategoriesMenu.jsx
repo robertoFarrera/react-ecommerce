@@ -4,7 +4,7 @@ import './CategoriesMenu.scss';
 
 const CategoriesMenu = ({ categories }) => {
   return (
-    <div className='categories-container'>
+    <div className='categories-menu-container'>
       {categories.map((category) => (
         <CategoryItem key={category.id} category={category} />
       ))}
