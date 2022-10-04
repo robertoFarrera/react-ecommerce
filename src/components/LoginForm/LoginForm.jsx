@@ -63,7 +63,7 @@ const LoginForm = () => {
         <FormInput
           label='Email'
           type='emal'
-          id='email'
+          id='loginEmail'
           name='email'
           required
           onChange={handleChange}
@@ -73,7 +73,7 @@ const LoginForm = () => {
         <FormInput
           label='Password'
           type='password'
-          id='password'
+          id='LoginPassword'
           name='password'
           required
           onChange={handleChange}
