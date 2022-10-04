@@ -1,14 +1,13 @@
 import { useState } from 'react';
+
+import Button, { BUTTON_TYPE_CLASSES } from '../Button/Button';
+import FormInput from '../FormInput/FormInput';
+import { ButtonsContainer, LoginFormContainer } from './LoginForm.styles';
+
 import {
-  createUserDocumentFromAuth,
   signInAuthUserWithEmailAndPassword,
   signInWithGooglePopup,
 } from '../../utils/firebase/firebase.utils';
-
-import Button from '../Button/Button';
-import FormInput from '../FormInput/FormInput';
-
-import './LoginForm.scss';
 
 const defaultFormFields = {
   email: '',
@@ -57,7 +56,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className='register-form-container'>
+    <LoginFormContainer>
       <h2>Already have an account?</h2>
       <span>Sign in with your email and password</span>
       <form onSubmit={handleSubmit}>
@@ -80,14 +79,18 @@ const LoginForm = () => {
           onChange={handleChange}
           value={password}
         />
-        <div className='buttons-container'>
+        <ButtonsContainer>
           <Button type='submit'>Sign In</Button>
-          <Button type='button' buttonType='google' onClick={signInWithGoogle}>
+          <Button
+            type='button'
+            buttonType={BUTTON_TYPE_CLASSES.google}
+            onClick={signInWithGoogle}
+          >
             Google sign in
           </Button>
-        </div>
+        </ButtonsContainer>
       </form>
-    </div>
+    </LoginFormContainer>
   );
 };
 

@@ -6,8 +6,7 @@ import {
 
 import Button from '../Button/Button';
 import FormInput from '../FormInput/FormInput';
-
-import './RegisterForm.scss';
+import { LoginFormContainer } from '../LoginForm/LoginForm.styles';
 
 const defaultFormFields = {
   displayName: '',
@@ -58,7 +57,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className='register-form-container'>
+    <LoginFormContainer>
       <h2>Don't have an account?</h2>
       <span>Sign up with your email and password</span>
       <form onSubmit={handleSubmit}>
@@ -104,7 +103,7 @@ const RegisterForm = () => {
 
         <Button type='submit'>Sign Up</Button>
       </form>
-    </div>
+    </LoginFormContainer>
   );
 };
 
