@@ -6,7 +6,7 @@ import CategoryPreview from '../../components/CategoryPreview/CategoryPreview';
 import {
   selectCategoriesIsLoading,
   selectCategoriesMap,
-} from '../../store/categories/categorySelector';
+} from '../../redux/categories/categorySelector';
 
 const CategoriesPreview = () => {
   const categoriesMap = useSelector(selectCategoriesMap);

@@ -8,7 +8,7 @@ import reportWebVitals from './reportWebVitals';
 
 import App from './App';
 
-import { persistor, store } from './store/store';
+import { persistor, store } from './redux/store';
 
 import './index.scss';
 

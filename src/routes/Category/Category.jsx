@@ -7,7 +7,7 @@ import ProductCard from '../../components/ProductCard/ProductCard';
 import {
   selectCategoriesIsLoading,
   selectCategoriesMap,
-} from '../../store/categories/categorySelector';
+} from '../../redux/categories/categorySelector';
 
 import { CategoryContainer, CategoryTitle } from './Category.styles.jsx';
 

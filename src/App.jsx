@@ -13,7 +13,7 @@ import Navigation from './routes/Navigation/Navigation';
 import Shop from './routes/Shop/Shop';
 import Checkout from './routes/Checkout/Checkout';
 
-import { setCurrentUser } from './store/user/userActions.js';
+import { setCurrentUser } from './redux/user/userActions.js';
 
 const App = () => {
   const dispatch = useDispatch();

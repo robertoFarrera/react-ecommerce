@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 
-import { selectCurrentUser } from '../../store/user/userSelector';
-import { selectIsCartOpen } from '../../store/cart/cartSelector';
+import { selectCurrentUser } from '../../redux/user/userSelector';
+import { selectIsCartOpen } from '../../redux/cart/cartSelector';
 import { signOutUser } from '../../utils/firebase/firebase.utils';
 
 import CartIcon from '../../components/CartIcon/CartIcon';

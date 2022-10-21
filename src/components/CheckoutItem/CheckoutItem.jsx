@@ -3,8 +3,8 @@ import {
   addItemToCart,
   clearItemFromCart,
   removeItemFromCart,
-} from '../../store/cart/cartActions.js';
-import { selectCartItems } from '../../store/cart/cartSelector.js';
+} from '../../redux/cart/cartActions.js';
+import { selectCartItems } from '../../redux/cart/cartSelector.js';
 
 import {
   Arrow,
