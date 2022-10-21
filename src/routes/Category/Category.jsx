@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import CategortySkeleton from '../../components/CategortySkeleton/CategortySkeleton';
 import ProductCard from '../../components/ProductCard/ProductCard';
 
-import { selectCategoriesMap } from '../../store/categories/categorySelector';
+import {
+  selectCategoriesIsLoading,
+  selectCategoriesMap,
+} from '../../store/categories/categorySelector';
 
 import { CategoryContainer, CategoryTitle } from './Category.styles.jsx';
 
@@ -11,6 +15,7 @@ const Category = () => {
   const { category } = useParams();
   const categoriesMap = useSelector(selectCategoriesMap);
   const [products, setProducts] = useState(categoriesMap[category]);
+  const isLoading = useSelector(selectCategoriesIsLoading);
 
   useEffect(() => {
     setProducts(categoriesMap[category]);
@@ -19,12 +24,16 @@ const Category = () => {
   return (
     <>
       <CategoryTitle>{category}</CategoryTitle>
-      <CategoryContainer>
-        {products &&
-          products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-      </CategoryContainer>
+      {isLoading ? (
+        <CategortySkeleton />
+      ) : (
+        <CategoryContainer>
+          {products &&
+            products.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+        </CategoryContainer>
+      )}
     </>
   );
 };
