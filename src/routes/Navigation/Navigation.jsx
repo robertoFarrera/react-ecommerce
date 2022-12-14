@@ -1,9 +1,9 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 
 import { selectCurrentUser } from '../../redux/user/userSelector';
 import { selectIsCartOpen } from '../../redux/cart/cartSelector';
-import { signOutUser } from '../../utils/firebase/firebase.utils';
+import { signOutStart } from '../../redux/user/userActions';
 
 import CartIcon from '../../components/CartIcon/CartIcon';
 import CartDropdown from '../../components/CartDropdown/CartDropdown';
@@ -20,6 +20,9 @@ import {
 const Navigation = () => {
   const currentUser = useSelector(selectCurrentUser);
   const isCartOpen = useSelector(selectIsCartOpen);
+  const dispatch = useDispatch();
+
+  const signOutUser = () => dispatch(signOutStart());
 
   return (
     <>
