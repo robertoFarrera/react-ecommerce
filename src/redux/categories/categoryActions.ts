@@ -1,32 +1,17 @@
-import { ActionWithPayload, createAction } from '../../utils/reducer/reducer.utils';
+import { Action, ActionWithPayload, createAction, withMatcher } from '../../utils/reducer/reducer.utils';
 import { Category, CATEGORY_ACTION_TYPES } from './categoryTypes';
 
-import { getCategoriesAndDocuments } from '../../utils/firebase/firebase.utils';
+export type FetchCategoriesStart = Action<CATEGORY_ACTION_TYPES.FETCH_CATEGORIES_START>;
+export type FetchCategoriesSuccess = ActionWithPayload<CATEGORY_ACTION_TYPES.FETCH_CATEGORIES_SUCCESS, Category[]>;
+export type FetchCategoriesFailed = ActionWithPayload<CATEGORY_ACTION_TYPES.FETCH_CATEGORIES_FAILED, Error>;
 
-type SetCategories = ActionWithPayload<CATEGORY_ACTION_TYPES.SET_CATEGORIES, Category[]>;
-type FetchCategoriesStart = Action<CATEGORY_ACTION_TYPES.FETCH_CATEGORIES_START>;
-type FetchCategoriesSuccess = ActionWithPayload<CATEGORY_ACTION_TYPES.FETCH_CATEGORIES_SUCCESS, Category[]>;
-type FetchCategoriesFailed = ActionWithPayload<CATEGORY_ACTION_TYPES.FETCH_CATEGORIES_FAILED, TypeError>;
+export type CategoryAction = FetchCategoriesStart | FetchCategoriesSuccess | FetchCategoriesFailed;
 
+export const fetchCategoriesStart = withMatcher((): FetchCategoriesStart =>
+  createAction(CATEGORY_ACTION_TYPES.FETCH_CATEGORIES_START));
 
-export const setCategories = (categoriesArray: Category[]): SetCategories =>
-  createAction(CATEGORY_ACTION_TYPES.SET_CATEGORIES, categoriesArray);
+export const fetchCategoriesSuccess = withMatcher((categoriesArray: Category[]): FetchCategoriesSuccess =>
+  createAction(CATEGORY_ACTION_TYPES.FETCH_CATEGORIES_SUCCESS, categoriesArray));
 
-export const fetchCategoriesStart = (): FetchCategoriesStart =>
-  createAction(CATEGORY_ACTION_TYPES.FETCH_CATEGORIES_START);
-
-export const fetchCategoriesSuccess = (categoriesArray: Category[]): FetchCategoriesSuccess =>
-  createAction(CATEGORY_ACTION_TYPES.FETCH_CATEGORIES_SUCCESS, categoriesArray);
-
-export const fetchCategoriesFailed = (error: TypeError): FetchCategoriesFailed =>
-  createAction(CATEGORY_ACTION_TYPES.FETCH_CATEGORIES_FAILED, error);
-
-export const fetchCategoriesAsync = () => async (dispatch) => {
-  dispatch(fetchCategoriesStart());
-  try {
-    const categoriesArray = await getCategoriesAndDocuments();
-    dispatch(fetchCategoriesSuccess(categoriesArray));
-  } catch (error) {
-    dispatch(fetchCategoriesFailed(error));
-  }
-};
+export const fetchCategoriesFailed = withMatcher((error: Error): FetchCategoriesFailed =>
+  createAction(CATEGORY_ACTION_TYPES.FETCH_CATEGORIES_FAILED, error));
