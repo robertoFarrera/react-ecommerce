@@ -8,7 +8,7 @@ import Navigation from './routes/Navigation/Navigation';
 import Shop from './routes/Shop/Shop';
 import Checkout from './routes/Checkout/Checkout';
 
-import { checkUserSession } from './redux/user/userActions.js';
+import { checkUserSession } from './redux/user/userActions';
 
 const App = () => {
   const dispatch = useDispatch();
