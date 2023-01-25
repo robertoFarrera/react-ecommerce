@@ -1,3 +1,5 @@
+import { FC } from 'react';
+import { CategoryItem } from '../../redux/categories/categoryTypes';
 import ProductCard from '../ProductCard/ProductCard';
 import {
   CategoryPreviewContainer,
@@ -5,7 +7,12 @@ import {
   Title,
 } from './CategoryPreview.styles';
 
-const CategoryPreview = ({ title, products }) => {
+type CategoryPreviewProps = {
+  title: string;
+  products: CategoryItem[];
+};
+
+const CategoryPreview: FC<CategoryPreviewProps> = ({ title, products }) => {
   return (
     <CategoryPreviewContainer>
       <h2>

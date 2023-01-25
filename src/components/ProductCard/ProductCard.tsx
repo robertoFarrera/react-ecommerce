@@ -1,6 +1,8 @@
+import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItemToCart } from '../../redux/cart/cartActions';
 import { selectCartItems } from '../../redux/cart/cartSelector';
+import { CategoryItem } from '../../redux/categories/categoryTypes';
 
 import Button, { BUTTON_TYPE_CLASSES } from '../Button/Button';
 import {
@@ -10,7 +12,11 @@ import {
   ProductCardContainer,
 } from './ProductCard.styles';
 
-const ProductCard = ({ product }) => {
+type ProductCardProps = {
+  product: CategoryItem;
+};
+
+const ProductCard: FC<ProductCardProps> = ({ product }) => {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
 

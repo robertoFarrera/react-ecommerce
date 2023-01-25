@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { signUpStart } from '../../redux/user/userActions';
 
@@ -22,7 +22,7 @@ const RegisterForm = () => {
     setFormFiields(defaultFormFields);
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (password !== confirmPassword) {
@@ -32,17 +32,13 @@ const RegisterForm = () => {
 
     try {
       dispatch(signUpStart(email, password, displayName));
-
       resetFormInputs();
     } catch (error) {
-      if (error.code === 'auth/email-already-in-use')
-        alert('Cannot create user. Email is already in use.');
-
       console.log(error);
     }
   };
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
     setFormFiields({ ...formFields, [name]: value });

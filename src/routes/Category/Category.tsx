@@ -9,10 +9,16 @@ import {
   selectCategoriesMap,
 } from '../../redux/categories/categorySelector';
 
-import { CategoryContainer, CategoryTitle } from './Category.styles.jsx';
+import { CategoryContainer, CategoryTitle } from './Category.styles';
+
+type CategoryRouteParams = {
+  category: string;
+};
 
 const Category = () => {
-  const { category } = useParams();
+  const { category } = useParams<
+    keyof CategoryRouteParams
+  >() as CategoryRouteParams;
   const categoriesMap = useSelector(selectCategoriesMap);
   const [products, setProducts] = useState(categoriesMap[category]);
   const isLoading = useSelector(selectCategoriesIsLoading);

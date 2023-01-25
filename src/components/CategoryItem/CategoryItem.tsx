@@ -1,11 +1,17 @@
+import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Category } from '../../redux/categories/categoryTypes';
 import {
   CategoryItemContainer,
   BackgroundImage,
   Body,
-} from './CategoryItem.styles.jsx';
+} from './CategoryItem.styles';
 
-const CategoryItem = ({ category }) => {
+type CategoryItemProps = {
+  category: Category;
+};
+
+const CategoryItem: FC<CategoryItemProps> = ({ category }) => {
   const { imageUrl, title } = category;
   const navigate = useNavigate();
 

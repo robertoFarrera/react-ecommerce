@@ -1,7 +1,7 @@
-import React from 'react';
+import { FC } from 'react';
 import ContentLoader from 'react-content-loader';
 
-const CategortySkeleton = (props) => (
+const CategortySkeleton: FC = (props) => (
   <ContentLoader
     speed={2}
     width='100%'

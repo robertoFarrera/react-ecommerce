@@ -5,11 +5,7 @@ import {
   selectIsCartOpen,
 } from '../../redux/cart/cartSelector';
 
-import {
-  CartIconContainer,
-  ItemCount,
-  ShoppingIcon,
-} from './CartIcon.styles.jsx';
+import { CartIconContainer, ItemCount, ShoppingIcon } from './CartIcon.styles';
 
 const CartIcon = () => {
   const dispatch = useDispatch();
